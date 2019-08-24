@@ -8,7 +8,7 @@ import AboutContent from '@components/about/AboutContent';
 const AboutView = () => {
   return (
     <div>
-      <ViewTitle title="About Alex Measday"></ViewTitle>
+      <ViewTitle title="About Alex Measday" />
       <AboutContent />
     </div>
   );
