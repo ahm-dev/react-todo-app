@@ -299,6 +299,9 @@ module.exports = function(webpackEnv) {
         ),
         '@config': path.normalize(
           path.resolve(__dirname + '/../src/client/config')
+        ),
+        '@store': path.normalize(
+          path.resolve(__dirname + '/../src/client/store')
         )
       },
       plugins: [
