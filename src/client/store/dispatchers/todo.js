@@ -14,3 +14,14 @@ export const removeTodo = (currentTodos, removedTodoIndex) => dispatch => {
     payload: actions.removeTodo(currentTodos, removedTodoIndex)
   });
 };
+
+export const updateTodo = (
+  currentTodos,
+  updatedTodoIndex,
+  updatedTodo
+) => dispatch => {
+  dispatch({
+    type: ACTION_TYPE.UPDATE_TODO,
+    payload: actions.updateTodo(currentTodos, updatedTodoIndex, updatedTodo)
+  });
+};

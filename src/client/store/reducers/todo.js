@@ -23,11 +23,8 @@ const initialState = {
 export default function todoStore(state = initialState, action) {
   switch (action.type) {
     case ACTION_TYPE.ADD_NEW_TODO:
-      return {
-        ...state,
-        todos: action.payload.todos
-      };
     case ACTION_TYPE.REMOVE_TODO:
+    case ACTION_TYPE.UPDATE_TODO:
       return {
         ...state,
         todos: action.payload.todos

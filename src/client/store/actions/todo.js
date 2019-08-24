@@ -20,3 +20,10 @@ export const removeTodo = (currentTodos, removedTodoIndex) => {
 
   return { todos: updatedTodosList };
 };
+
+export const updateTodo = (currentTodos, updatedTodoIndex, updatedTodo) => {
+  let updatedTodosList = currentTodos.slice();
+  updatedTodosList[updatedTodoIndex] = updatedTodo;
+
+  return { todos: updatedTodosList };
+};
