@@ -1,6 +1,7 @@
 // External dependencies
 import React from 'react';
 import { Grid, List } from '@material-ui/core';
+import { connect } from 'react-redux';
 
 // Local dependencies
 import TodoItem from '@components/todo/TodoItem';
@@ -30,4 +31,8 @@ const TodoList = props => {
   );
 };
 
-export default TodoList;
+const mapStateToProps = state => ({
+  todoItems: state.todoStore.todos
+});
+
+export default connect(mapStateToProps)(TodoList);
