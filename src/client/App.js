@@ -1,12 +1,14 @@
+// External dependencies
 import React from 'react';
-import '@assets/App.css';
 
-import Header from '@components/layout/Header';
+// Local dependencies
+import '@assets/App.css';
+import AppRouter from '@components/routing/AppRouter';
 
 function App() {
   return (
     <div className="App">
-      <Header></Header>
+      <AppRouter />
     </div>
   );
 }
