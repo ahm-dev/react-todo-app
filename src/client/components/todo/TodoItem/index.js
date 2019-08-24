@@ -17,7 +17,7 @@ const TodoItem = props => {
         className="todo-list-item-text"
         primary={text}
       ></ListItemText>
-      <TodoItemActions />
+      <TodoItemActions todoIndex={itemIndex} />
     </ListItem>
   );
 };

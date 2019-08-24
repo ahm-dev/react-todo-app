@@ -7,3 +7,10 @@ export const addNewTodo = (currentTodos, newTodoText) => dispatch => {
     payload: actions.addNewTodo(currentTodos, newTodoText)
   });
 };
+
+export const removeTodo = (currentTodos, removedTodoIndex) => dispatch => {
+  dispatch({
+    type: ACTION_TYPE.REMOVE_TODO,
+    payload: actions.removeTodo(currentTodos, removedTodoIndex)
+  });
+};

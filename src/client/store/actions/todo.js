@@ -12,3 +12,11 @@ export const addNewTodo = (currentTodos, newTodoText) => {
 
   return { todos: updatedTodosList };
 };
+
+export const removeTodo = (currentTodos, removedTodoIndex) => {
+  const updatedTodosList = currentTodos.filter(
+    (todo, index) => index !== removedTodoIndex
+  );
+
+  return { todos: updatedTodosList };
+};

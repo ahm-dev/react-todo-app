@@ -7,8 +7,14 @@ import {
   ListItemSecondaryAction,
   Tooltip
 } from '@material-ui/core';
+import { connect } from 'react-redux';
+
+// Local dependencies
+import { removeTodo } from '@store/dispatchers';
 
 const TodoItemActions = props => {
+  const { removeTodo, todoIndex, todoItems } = props;
+
   return (
     <ListItemSecondaryAction>
       <Tooltip title="Edit this item" placement="top">
@@ -17,7 +23,11 @@ const TodoItemActions = props => {
         </IconButton>
       </Tooltip>
       <Tooltip title="Remove this item" placement="top">
-        <IconButton className="todo-list-item-action" edge="end">
+        <IconButton
+          className="todo-list-item-action"
+          edge="end"
+          onClick={() => removeTodo(todoItems, todoIndex)}
+        >
           <DeleteIcon />
         </IconButton>
       </Tooltip>
@@ -25,4 +35,15 @@ const TodoItemActions = props => {
   );
 };
 
-export default TodoItemActions;
+const mapStateToProps = state => ({
+  todoItems: state.todoStore.todos
+});
+
+const mapDispatchToProps = {
+  removeTodo
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoItemActions);
