@@ -43,8 +43,12 @@
   text-align: left;
 }
 
-.App .ma-2 {
+.App .ma-8 {
   margin: 8px;
+}
+
+.App .mt-44 {
+  margin-top: 44px;
 }
 
 /* Content styling */

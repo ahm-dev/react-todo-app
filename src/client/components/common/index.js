@@ -1,3 +1,3 @@
-import TestComponent from '@components/common/TestComponent';
+import Loading from '@components/common/Loading';
 
-export { TestComponent };
+export { Loading };
