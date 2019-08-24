@@ -4,14 +4,14 @@ import Loadable from 'react-loadable';
 // Local dependencies
 import { Loading } from '@components/common';
 
-// Add Loadable versions of each necessary route here
+// Add Loadable versions of each necessary view here
 const TodoView = Loadable({
-  loader: () => import('@src/client/views/Todo'),
+  loader: () => import('@src/client/views/todo'),
   loading: Loading
 });
 
 const AboutView = Loadable({
-  loader: () => import('@src/client/views/About'),
+  loader: () => import('@src/client/views/about'),
   loading: Loading
 });
 

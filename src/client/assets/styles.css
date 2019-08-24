@@ -1,0 +1,79 @@
+/* Variables */
+:root {
+  --dgrey: #444444;
+  --white: #ffffff;
+  --pink: #f50057;
+  --lpink: #f57ea8;
+}
+
+/* Root-level styling */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--dgrey);
+}
+
+.app {
+  text-align: center;
+  color: #ffffff;
+  font-family: 'Roboto';
+}
+
+.app a {
+  text-decoration: none; /* Overrides default React-Router Link text decoration */
+}
+
+/* General layout / spacing styling */
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.app .ma-8 {
+  margin: 8px;
+}
+
+.app .mt-44 {
+  margin-top: 44px;
+}
+
+/* Content styling */
+
+.app .link {
+  color: var(--pink);
+  text-decoration: underline;
+}
+
+.app .link:hover {
+  color: var(--lpink);
+}
+
+.app .view-title {
+  font-size: 2.5rem;
+}
+
+.app .about-me-img {
+  height: 30vh;
+  border-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.app .about-descr {
+  font-size: 1.2rem;
+}
+
+@media (min-width: 1200px) {
+  .app .about-descr {
+    margin: 20px 20% 0 20%;
+  }
+}
