@@ -2,8 +2,10 @@
 :root {
   --dgrey: #444444;
   --white: #ffffff;
-  --pink: #f50057;
-  --lpink: #f57ea8;
+  --action: #f50057;
+  --actionHover: #f57ea8;
+  --warning: #ff8c00;
+  --success: #008800;
 }
 
 /* Root-level styling */
@@ -30,16 +32,32 @@ body {
 
 /* General layout / spacing styling */
 
-.flex-grow {
+.app .w-100 {
+  width: 100%;
+}
+
+.app .flex-grow {
   flex-grow: 1;
 }
 
-.text-left {
+.app .text-left {
   text-align: left;
 }
 
 .app .ma-8 {
   margin: 8px;
+}
+
+.app .mt-8 {
+  margin-top: 8px;
+}
+
+.app .mt-24 {
+  margin-top: 24px;
+}
+
+.app .mr-8 {
+  margin-right: 8px;
 }
 
 .app .mt-44 {
@@ -48,13 +66,37 @@ body {
 
 /* Content styling */
 
+.app .todo-list-container {
+  background-color: var(--white);
+  color: var(--dgrey);
+  padding: 0;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.app .todo-list-item-avatar {
+  background-color: var(--warning);
+}
+
+.app .todo-list-item-avatar-completed {
+  background-color: var(--success);
+}
+
+.app .todo-list-item-text span {
+  font-size: 1.3rem;
+}
+
+.app .todo-list-item-action {
+  color: var(--action);
+}
+
 .app .link {
-  color: var(--pink);
+  color: var(--action);
   text-decoration: underline;
 }
 
 .app .link:hover {
-  color: var(--lpink);
+  color: var(--actionHover);
 }
 
 .app .view-title {
