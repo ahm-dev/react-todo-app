@@ -7,7 +7,7 @@ const Content = props => {
 
   return (
     <div className="flex-grow">
-      <Grid container spacing={24}>
+      <Grid container>
         <Grid item xs={2}></Grid> {/* empty - serves as offset */}
         <Grid item xs={8} className="mt-44">
           {children}
