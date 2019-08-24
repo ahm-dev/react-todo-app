@@ -10,7 +10,7 @@ const TodoList = props => {
 
   return (
     <Grid container>
-      <Grid item xs={0} lg={2} /> {/* empty - serves as offset */}
+      <Grid item xs={false} lg={2} /> {/* empty - serves as offset */}
       <Grid item xs={12} lg={8}>
         <List className="todo-list-container">
           {todoItems.map((item, index) => {
@@ -25,7 +25,7 @@ const TodoList = props => {
           })}
         </List>
       </Grid>
-      <Grid item xs={0} lg={2} /> {/* empty - consistency */}
+      <Grid item xs={false} lg={2} /> {/* empty - consistency */}
     </Grid>
   );
 };
