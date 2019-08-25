@@ -27,3 +27,11 @@ export const updateTodo = (currentTodos, updatedTodoIndex, updatedTodo) => {
 
   return { todos: updatedTodosList };
 };
+
+export const setTodoDialogText = newTextValue => {
+  return { todoDialogText: newTextValue };
+};
+
+export const setSelectedTodoIndex = todoIndex => {
+  return { selectedTodoIndex: todoIndex };
+};

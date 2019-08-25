@@ -13,12 +13,15 @@ import { connect } from 'react-redux';
 import { removeTodo } from '@store/dispatchers';
 
 const TodoItemActions = props => {
-  const { removeTodo, todoIndex, todoItems } = props;
+  const { editOnClick, removeTodo, todoIndex, todoItems } = props;
 
   return (
     <ListItemSecondaryAction>
       <Tooltip title="Edit this item" placement="top">
-        <IconButton className="todo-list-item-action">
+        <IconButton
+          className="todo-list-item-action"
+          onClick={() => editOnClick(todoIndex)}
+        >
           <EditIcon />
         </IconButton>
       </Tooltip>

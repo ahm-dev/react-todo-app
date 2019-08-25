@@ -1,35 +1,67 @@
 // External dependencies
 import React from 'react';
 import AddIcon from '@material-ui/icons/Add';
+import { connect } from 'react-redux';
 
 // Local dependencies
-import NewTodoDialog from '@components/todo/AddTodoCtrls/NewTodoDialog';
+import TodoTextDialog from '@components/todo/TodoTextDialog';
 import { IconBtn } from '@components/common';
+import { addNewTodo, setTodoDialogText } from '@store/dispatchers';
 
 class AddTodoCtrls extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dialogOpen: false
+      addDialogOpen: false
     };
   }
 
-  closeDialog = () => {
-    this.setState({ dialogOpen: false });
+  // resets Redux dialog text to empty && closes dialog
+  closeAddDialog = () => {
+    const { setTodoDialogText } = this.props;
+
+    setTodoDialogText('');
+    this.setState({ addDialogOpen: false });
   };
 
-  openDialog = () => {
-    this.setState({ dialogOpen: true });
+  // sets Redux dialog text to selected todo item for editing && opens dialog
+  openAddDialog = () => {
+    const { setTodoDialogText } = this.props;
+
+    setTodoDialogText('');
+    this.setState({ addDialogOpen: true });
+  };
+
+  updateDialogText = e => {
+    const { setTodoDialogText } = this.props;
+    const newTextValue = e.target.value;
+
+    setTodoDialogText(newTextValue);
+  };
+
+  onAddTodo = () => {
+    const { addNewTodo, todoDialogText, todoItems } = this.props;
+    const { closeAddDialog } = this;
+
+    addNewTodo(todoItems, todoDialogText);
+    closeAddDialog();
   };
 
   render() {
-    const { dialogOpen } = this.state;
-    const { closeDialog, openDialog } = this;
+    const { addDialogOpen } = this.state;
+    const { todoDialogText } = this.props;
+    const { closeAddDialog, onAddTodo, openAddDialog, updateDialogText } = this;
 
     return (
       <div className="mt-24 w-100">
-        <NewTodoDialog open={dialogOpen} onClose={closeDialog} />
-        <IconBtn btnText="add new todo" onClick={openDialog}>
+        <TodoTextDialog
+          open={addDialogOpen}
+          onChange={updateDialogText}
+          onClose={closeAddDialog}
+          onSave={onAddTodo}
+          text={todoDialogText}
+        />
+        <IconBtn btnText="add new todo" onClick={openAddDialog}>
           <AddIcon className="mr-8" />
         </IconBtn>
       </div>
@@ -37,10 +69,17 @@ class AddTodoCtrls extends React.Component {
   }
 }
 
-export default AddTodoCtrls;
+const mapStateToProps = state => ({
+  todoDialogText: state.todoStore.todoDialogText,
+  todoItems: state.todoStore.todos
+});
 
-// const { addNewTodo, todoItems } = this.props;
+const mapDispatchToProps = {
+  addNewTodo,
+  setTodoDialogText
+};
 
-// e.preventDefault();
-// this.setState({ dialogOpen: true });
-// // addNewTodo(todoItems, 'some test text');
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddTodoCtrls);

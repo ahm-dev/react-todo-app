@@ -17,7 +17,9 @@ const initialState = {
       notes: [],
       completed: true
     }
-  ]
+  ],
+  todoDialogText: '',
+  selectedTodoIndex: -1
 };
 
 export default function todoStore(state = initialState, action) {
@@ -28,6 +30,16 @@ export default function todoStore(state = initialState, action) {
       return {
         ...state,
         todos: action.payload.todos
+      };
+    case ACTION_TYPE.SET_TODO_DIALOG_TEXT:
+      return {
+        ...state,
+        todoDialogText: action.payload.todoDialogText
+      };
+    case ACTION_TYPE.SET_SELECTED_TODO_INDEX:
+      return {
+        ...state,
+        selectedTodoIndex: action.payload.selectedTodoIndex
       };
     default:
       return state;

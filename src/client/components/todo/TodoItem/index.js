@@ -10,7 +10,14 @@ import { updateTodo } from '@store/dispatchers';
 import { updateProperty } from '@lib/formatting';
 
 const TodoItem = props => {
-  const { hasDivider, itemIndex, todoItem, todoItems, updateTodo } = props;
+  const {
+    editOnClick,
+    hasDivider,
+    itemIndex,
+    todoItem,
+    todoItems,
+    updateTodo
+  } = props;
   const { completed, text } = todoItem;
 
   const toggleItemCompletion = () => {
@@ -31,7 +38,7 @@ const TodoItem = props => {
         className="todo-list-item-text"
         primary={text}
       ></ListItemText>
-      <TodoItemActions todoIndex={itemIndex} />
+      <TodoItemActions editOnClick={editOnClick} todoIndex={itemIndex} />
     </ListItem>
   );
 };

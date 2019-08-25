@@ -25,3 +25,17 @@ export const updateTodo = (
     payload: actions.updateTodo(currentTodos, updatedTodoIndex, updatedTodo)
   });
 };
+
+export const setTodoDialogText = newTextValue => dispatch => {
+  dispatch({
+    type: ACTION_TYPE.SET_TODO_DIALOG_TEXT,
+    payload: actions.setTodoDialogText(newTextValue)
+  });
+};
+
+export const setSelectedTodoIndex = todoIndex => dispatch => {
+  dispatch({
+    type: ACTION_TYPE.SET_SELECTED_TODO_INDEX,
+    payload: actions.setSelectedTodoIndex(todoIndex)
+  });
+};
