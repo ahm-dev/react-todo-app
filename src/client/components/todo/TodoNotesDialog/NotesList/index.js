@@ -17,7 +17,7 @@ const NotesList = props => {
     <List>
       {notes.map((note, index) => {
         return (
-          <ListItem key={note} dense>
+          <ListItem key={`${note}-${index}`} dense>
             <ListItemText>{note}</ListItemText>
             <ListItemSecondaryAction>
               <Tooltip title="Remove this note" placement="top">

@@ -6,12 +6,12 @@ import { Loading } from '@components/common';
 
 // Add Loadable versions of each necessary view here
 const TodoView = Loadable({
-  loader: () => import('@src/client/views/todo'),
+  loader: () => import('@src/client/views/Todo'),
   loading: Loading
 });
 
 const AboutView = Loadable({
-  loader: () => import('@src/client/views/about'),
+  loader: () => import('@src/client/views/About'),
   loading: Loading
 });
 
