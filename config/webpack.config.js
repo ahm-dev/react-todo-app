@@ -302,7 +302,8 @@ module.exports = function(webpackEnv) {
         ),
         '@store': path.normalize(
           path.resolve(__dirname + '/../src/client/store')
-        )
+        ),
+        '@lib': path.normalize(path.resolve(__dirname + '/../src/client/lib'))
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
