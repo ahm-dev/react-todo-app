@@ -90,6 +90,19 @@ class TodoList extends React.Component {
     removeTodo(todoItems, selectedTodoIndex);
   };
 
+  toggleItemCompletion = (e, todoItem, itemIndex) => {
+    e.stopPropagation();
+    const { updateTodo, todoItems } = this.props;
+    const updatedCompletion = !todoItem.completed;
+    const updatedItem = updateProperty(
+      todoItem,
+      'completed',
+      updatedCompletion
+    );
+
+    updateTodo(todoItems, itemIndex, updatedItem);
+  };
+
   render() {
     const { editDialogOpen, notesDialogOpen } = this.state;
     const {
@@ -99,6 +112,7 @@ class TodoList extends React.Component {
       openEditDialog,
       openNotesDialog,
       removeItem,
+      toggleItemCompletion,
       updateDialogText
     } = this;
     const { todoDialogText, todoItems } = this.props;
@@ -128,6 +142,7 @@ class TodoList extends React.Component {
                     editOnClick={openEditDialog}
                     itemOnClick={openNotesDialog}
                     removeOnClick={removeItem}
+                    toggleItemCompletion={toggleItemCompletion}
                   />
                 );
               })}

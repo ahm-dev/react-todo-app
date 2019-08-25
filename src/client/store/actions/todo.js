@@ -1,11 +1,9 @@
+// External dependencies
 import { concat } from 'lodash';
-import { updateProperty } from '@lib/formatting';
 
-const defaultTodo = {
-  text: '',
-  notes: [],
-  completed: false
-};
+// Local dependencies
+import { updateProperty } from '@lib/formatting';
+import { defaultTodo } from '@store/defaults';
 
 export const addNewTodo = (currentTodos, newTodoText) => {
   const newTodo = { ...defaultTodo, text: newTodoText };

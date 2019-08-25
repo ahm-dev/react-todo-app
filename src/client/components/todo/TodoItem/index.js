@@ -1,13 +1,10 @@
 // External dependencies
 import React from 'react';
 import { ListItem, ListItemText } from '@material-ui/core';
-import { connect } from 'react-redux';
 
 // Local dependencies
 import TodoItemAvatar from '@components/todo/TodoItem/TodoItemAvatar';
 import TodoItemActions from '@components/todo/TodoItem/TodoItemActions';
-import { updateTodo } from '@store/dispatchers';
-import { updateProperty } from '@lib/formatting';
 
 const TodoItem = props => {
   const {
@@ -17,22 +14,9 @@ const TodoItem = props => {
     itemOnClick,
     removeOnClick,
     todoItem,
-    todoItems,
-    updateTodo
+    toggleItemCompletion
   } = props;
   const { completed, text } = todoItem;
-
-  const toggleItemCompletion = e => {
-    e.stopPropagation();
-    const updatedCompletion = !todoItem.completed;
-    const updatedItem = updateProperty(
-      todoItem,
-      'completed',
-      updatedCompletion
-    );
-
-    updateTodo(todoItems, itemIndex, updatedItem);
-  };
 
   return (
     <ListItem
@@ -43,7 +27,10 @@ const TodoItem = props => {
         itemOnClick(itemIndex);
       }}
     >
-      <TodoItemAvatar completed={completed} onClick={toggleItemCompletion} />
+      <TodoItemAvatar
+        completed={completed}
+        onClick={e => toggleItemCompletion(e, todoItem, itemIndex)}
+      />
       <ListItemText
         className="todo-list-item-text"
         primary={text}
@@ -57,15 +44,8 @@ const TodoItem = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  todoItems: state.todoStore.todos
-});
-
-const mapDispatchToProps = {
-  updateTodo
+TodoItem.defaultProps = {
+  todoItem: {}
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoItem);
+export default TodoItem;
