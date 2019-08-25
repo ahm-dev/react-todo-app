@@ -14,13 +14,16 @@ const TodoItem = props => {
     editOnClick,
     hasDivider,
     itemIndex,
+    itemOnClick,
+    removeOnClick,
     todoItem,
     todoItems,
     updateTodo
   } = props;
   const { completed, text } = todoItem;
 
-  const toggleItemCompletion = () => {
+  const toggleItemCompletion = e => {
+    e.stopPropagation();
     const updatedCompletion = !todoItem.completed;
     const updatedItem = updateProperty(
       todoItem,
@@ -32,13 +35,24 @@ const TodoItem = props => {
   };
 
   return (
-    <ListItem dense button divider={hasDivider}>
+    <ListItem
+      dense
+      button
+      divider={hasDivider}
+      onClick={() => {
+        itemOnClick(itemIndex);
+      }}
+    >
       <TodoItemAvatar completed={completed} onClick={toggleItemCompletion} />
       <ListItemText
         className="todo-list-item-text"
         primary={text}
       ></ListItemText>
-      <TodoItemActions editOnClick={editOnClick} todoIndex={itemIndex} />
+      <TodoItemActions
+        editOnClick={editOnClick}
+        removeOnClick={removeOnClick}
+        todoIndex={itemIndex}
+      />
     </ListItem>
   );
 };

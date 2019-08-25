@@ -6,8 +6,10 @@ import { connect } from 'react-redux';
 // Local dependencies
 import TodoItem from '@components/todo/TodoItem';
 import TodoTextDialog from '@components/todo/TodoTextDialog';
+import TodoNotesDialog from '@components/todo/TodoNotesDialog';
 import { updateProperty } from '@lib/formatting';
 import {
+  removeTodo,
   setSelectedTodoIndex,
   setTodoDialogText,
   updateTodo
@@ -21,6 +23,10 @@ class TodoList extends React.Component {
     };
   }
 
+  closeNotesDialog = () => {};
+
+  openNotesDialog = selectedTodoIndex => {};
+
   // resets Redux dialog text to empty && closes dialog
   closeEditDialog = () => {
     const { setSelectedTodoIndex, setTodoDialogText } = this.props;
@@ -31,7 +37,8 @@ class TodoList extends React.Component {
   };
 
   // sets Redux dialog text to selected todo item for editing && opens dialog
-  openEditDialog = selectedTodoIndex => {
+  openEditDialog = (e, selectedTodoIndex) => {
+    e.stopPropagation();
     const { setSelectedTodoIndex, setTodoDialogText, todoItems } = this.props;
     const selectedTodoText = todoItems[selectedTodoIndex].text;
 
@@ -62,12 +69,21 @@ class TodoList extends React.Component {
     closeEditDialog();
   };
 
+  removeItem = (e, selectedTodoIndex) => {
+    e.stopPropagation();
+    const { removeTodo, todoItems } = this.props;
+
+    removeTodo(todoItems, selectedTodoIndex);
+  };
+
   render() {
     const { editDialogOpen } = this.state;
     const {
       closeEditDialog,
       onSaveUpdate,
       openEditDialog,
+      openNotesDialog,
+      removeItem,
       updateDialogText
     } = this;
     const { todoDialogText, todoItems } = this.props;
@@ -82,6 +98,7 @@ class TodoList extends React.Component {
           onSave={onSaveUpdate}
           text={todoDialogText}
         />
+        <TodoNotesDialog />
         <Grid container>
           <Grid item xs={false} lg={2} /> {/* empty - serves as offset */}
           <Grid item xs={12} lg={8}>
@@ -94,6 +111,8 @@ class TodoList extends React.Component {
                     itemIndex={index}
                     hasDivider={index < todoItems.length - 1}
                     editOnClick={openEditDialog}
+                    itemOnClick={openNotesDialog}
+                    removeOnClick={removeItem}
                   />
                 );
               })}
@@ -113,6 +132,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+  removeTodo,
   setSelectedTodoIndex,
   setTodoDialogText,
   updateTodo
