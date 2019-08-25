@@ -9,3 +9,37 @@ export const TODO_ACTION_TYPES = {
   REMOVE_TODO_NOTE: 'REMOVE_TODO_NOTE',
   SET_NOTE_DIALOG_TEXT: 'SET_NOTE_DIALOG_TEXT'
 };
+
+// Sample todos - you may optionally set these as the initialState
+// for 'todos' if you would like the page to start with some sample todos
+
+// todos: [
+//     {
+//       text: 'Sample todo',
+//       notes: ['I am a sample note', 'I am another sample note'],
+//       completed: false
+//     },
+//     {
+//       text: 'A second sample todo',
+//       notes: ['I am a sample note', 'I am another sample note'],
+//       completed: true
+//     },
+//     {
+//       text: 'A third sample todo',
+//       notes: ['I am a sample note', 'I am another sample note'],
+//       completed: true
+//     }
+//   ],
+
+export const todoStoreDefaults = {
+  todos: [],
+  todoDialogText: '',
+  selectedTodoIndex: -1,
+  noteDialogText: ''
+};
+
+export const defaultTodo = {
+  text: '',
+  notes: [],
+  completed: false
+};
