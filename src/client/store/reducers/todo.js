@@ -1,32 +1,10 @@
-import { TODO_ACTION_TYPES as ACTION_TYPE } from '@store/defaults';
+// Local dependencies
+import {
+  TODO_ACTION_TYPES as ACTION_TYPE,
+  todoStoreDefaults
+} from '@store/defaults';
 
-// Sample todos - you may optionally set these as the initialState
-// for 'todos' if you would like the page to start with some sample todos
-
-// todos: [
-//     {
-//       text: 'Sample todo',
-//       notes: ['I am a sample note', 'I am another sample note'],
-//       completed: false
-//     },
-//     {
-//       text: 'A second sample todo',
-//       notes: ['I am a sample note', 'I am another sample note'],
-//       completed: true
-//     },
-//     {
-//       text: 'A third sample todo',
-//       notes: ['I am a sample note', 'I am another sample note'],
-//       completed: true
-//     }
-//   ],
-
-const initialState = {
-  todos: [],
-  todoDialogText: '',
-  selectedTodoIndex: -1,
-  noteDialogText: ''
-};
+const initialState = todoStoreDefaults;
 
 export default function todoStore(state = initialState, action) {
   switch (action.type) {
