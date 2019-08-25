@@ -1,0 +1,125 @@
+/* Variables */
+:root {
+  --dgrey: #444444;
+  --white: #ffffff;
+  --action: #f50057;
+  --actionHover: #f57ea8;
+  --warning: #ff8c00;
+  --success: #008800;
+}
+
+/* Root-level styling */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--dgrey);
+}
+
+.app {
+  text-align: center;
+  color: #ffffff;
+  font-family: 'Roboto';
+}
+
+.app a {
+  text-decoration: none; /* Overrides default React-Router Link text decoration */
+}
+
+/* General layout / spacing styling */
+
+.app .w-100 {
+  width: 100%;
+}
+
+.app .flex-grow {
+  flex-grow: 1;
+}
+
+.app .text-left {
+  text-align: left;
+}
+
+.app .ma-8 {
+  margin: 8px;
+}
+
+.app .mt-8 {
+  margin-top: 8px;
+}
+
+.app .mt-24 {
+  margin-top: 24px;
+}
+
+.app .mr-8 {
+  margin-right: 8px;
+}
+
+.app .mt-44 {
+  margin-top: 44px;
+}
+
+.MuiDialog-root .ml-8 {
+  margin-left: 8px;
+}
+
+/* Content styling */
+
+.app .todo-list-container {
+  background-color: var(--white);
+  color: var(--dgrey);
+  padding: 0;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.app .todo-list-item-avatar {
+  background-color: var(--warning);
+}
+
+.app .todo-list-item-avatar-completed {
+  background-color: var(--success);
+}
+
+.app .todo-list-item-text span {
+  font-size: 1.3rem;
+}
+
+.app .todo-list-item-action {
+  color: var(--action);
+}
+
+.app .link {
+  color: var(--action);
+  text-decoration: underline;
+}
+
+.app .link:hover {
+  color: var(--actionHover);
+}
+
+.app .view-title {
+  font-size: 2.5rem;
+}
+
+.app .about-me-img {
+  height: 30vh;
+  border-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.app .about-descr {
+  font-size: 1.2rem;
+}
+
+@media (min-width: 1200px) {
+  .app .about-descr {
+    margin: 20px 20% 0 20%;
+  }
+}

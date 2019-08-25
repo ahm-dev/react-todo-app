@@ -296,7 +296,14 @@ module.exports = function(webpackEnv) {
         ),
         '@components': path.normalize(
           path.resolve(__dirname + '/../src/client/components')
-        )
+        ),
+        '@config': path.normalize(
+          path.resolve(__dirname + '/../src/client/config')
+        ),
+        '@store': path.normalize(
+          path.resolve(__dirname + '/../src/client/store')
+        ),
+        '@lib': path.normalize(path.resolve(__dirname + '/../src/client/lib'))
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding

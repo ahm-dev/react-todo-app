@@ -1,13 +1,18 @@
+// External dependencies
 import React from 'react';
-import '@assets/App.css';
+import { Provider } from 'react-redux';
 
-import Header from '@components/layout/Header';
+// Local dependencies
+import AppRouter from '@components/routing/AppRouter';
+import { store } from '@config/store';
 
 function App() {
   return (
-    <div className="App">
-      <Header></Header>
-    </div>
+    <Provider store={store}>
+      <div className="app">
+        <AppRouter />
+      </div>
+    </Provider>
   );
 }
 

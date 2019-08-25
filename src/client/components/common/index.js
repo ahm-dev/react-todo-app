@@ -1,3 +1,5 @@
-import TestComponent from '@components/common/TestComponent';
+import IconBtn from '@components/common/IconBtn';
+import Loading from '@components/common/Loading';
+import ViewTitle from '@components/common/ViewTitle';
 
-export { TestComponent };
+export { IconBtn, Loading, ViewTitle };
