@@ -10,6 +10,7 @@ import TodoNotesDialog from '@components/todo/TodoNotesDialog';
 import { updateProperty } from '@lib/formatting';
 import {
   removeTodo,
+  setNoteDialogText,
   setSelectedTodoIndex,
   setTodoDialogText,
   updateTodo
@@ -19,13 +20,26 @@ class TodoList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editDialogOpen: false
+      editDialogOpen: false,
+      notesDialogOpen: false
     };
   }
 
-  closeNotesDialog = () => {};
+  closeNotesDialog = () => {
+    const { setNoteDialogText, setSelectedTodoIndex } = this.props;
 
-  openNotesDialog = selectedTodoIndex => {};
+    setNoteDialogText('');
+    setSelectedTodoIndex(-1);
+    this.setState({ notesDialogOpen: false });
+  };
+
+  openNotesDialog = selectedTodoIndex => {
+    const { setNoteDialogText, setSelectedTodoIndex } = this.props;
+
+    setNoteDialogText('');
+    setSelectedTodoIndex(selectedTodoIndex);
+    this.setState({ notesDialogOpen: true });
+  };
 
   // resets Redux dialog text to empty && closes dialog
   closeEditDialog = () => {
@@ -77,9 +91,10 @@ class TodoList extends React.Component {
   };
 
   render() {
-    const { editDialogOpen } = this.state;
+    const { editDialogOpen, notesDialogOpen } = this.state;
     const {
       closeEditDialog,
+      closeNotesDialog,
       onSaveUpdate,
       openEditDialog,
       openNotesDialog,
@@ -98,7 +113,7 @@ class TodoList extends React.Component {
           onSave={onSaveUpdate}
           text={todoDialogText}
         />
-        <TodoNotesDialog />
+        <TodoNotesDialog onClose={closeNotesDialog} open={notesDialogOpen} />
         <Grid container>
           <Grid item xs={false} lg={2} /> {/* empty - serves as offset */}
           <Grid item xs={12} lg={8}>
@@ -133,6 +148,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   removeTodo,
+  setNoteDialogText,
   setSelectedTodoIndex,
   setTodoDialogText,
   updateTodo

@@ -29,13 +29,42 @@ export const updateTodo = (
 export const setTodoDialogText = newTextValue => dispatch => {
   dispatch({
     type: ACTION_TYPE.SET_TODO_DIALOG_TEXT,
-    payload: actions.setTodoDialogText(newTextValue)
+    payload: newTextValue
   });
 };
 
 export const setSelectedTodoIndex = todoIndex => dispatch => {
   dispatch({
     type: ACTION_TYPE.SET_SELECTED_TODO_INDEX,
-    payload: actions.setSelectedTodoIndex(todoIndex)
+    payload: todoIndex
+  });
+};
+
+export const addTodoNote = (
+  currentTodos,
+  todoIndex,
+  newNoteText
+) => dispatch => {
+  dispatch({
+    type: ACTION_TYPE.ADD_TODO_NOTE,
+    payload: actions.addTodoNote(currentTodos, todoIndex, newNoteText)
+  });
+};
+
+export const removeTodoNote = (
+  currentTodos,
+  todoIndex,
+  noteIndex
+) => dispatch => {
+  dispatch({
+    type: ACTION_TYPE.REMOVE_TODO_NOTE,
+    payload: actions.removeTodoNote(currentTodos, todoIndex, noteIndex)
+  });
+};
+
+export const setNoteDialogText = newTextValue => dispatch => {
+  dispatch({
+    type: ACTION_TYPE.SET_NOTE_DIALOG_TEXT,
+    payload: newTextValue
   });
 };
